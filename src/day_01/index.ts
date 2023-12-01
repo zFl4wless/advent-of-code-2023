@@ -17,7 +17,7 @@ export class AdventDayOne implements AdventDay {
   }
 
   partTwo(): string {
-    const copy = {
+    const copy: Record<string, string> = {
       'one': 'o1e',
       'two': 't2o',
       'three': 't3e',
@@ -29,9 +29,21 @@ export class AdventDayOne implements AdventDay {
       'nine': 'n9e'
     };
 
-    const input = readLines('day_01/input.txt');
+    const calibrationValues: number[] = [];
 
-    return '';
+    let input = readLines('day_01/input.txt').join('\n');
+
+    Object.keys(copy).forEach((key) => {
+      input = input.replaceAll(key, copy[key]);
+    });
+
+    for (const line of input.split('\n')) {
+      const numbers = line.split('').filter((n) => !isNaN(+n));
+
+      calibrationValues.push(parseInt(numbers[0] + numbers[numbers.length - 1]));
+    }
+
+    return calibrationValues.reduce((a, b) => a + b, 0).toString();
   }
 }
 
