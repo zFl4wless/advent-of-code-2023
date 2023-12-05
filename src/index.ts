@@ -2,6 +2,7 @@ import * as readline from 'readline';
 import {AdventDay} from "./AdventDay";
 import {AdventDayOne} from "./day_01";
 import {AdventDayTwo} from "./day_02";
+import {AdventDayThree} from "./day_03";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -11,6 +12,7 @@ const rl = readline.createInterface({
 const days: AdventDay[] = [
   new AdventDayOne,
   new AdventDayTwo,
+  new AdventDayThree,
 ];
 
 rl.question('Which day do you want to solve? [1-24] ', (answer) => {
